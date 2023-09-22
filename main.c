@@ -25,7 +25,9 @@ int main(int argc, char **argv)
 		cmd = token_l(line);
 		if (cmd == NULL)
 			continue;
-
-		status =  _execute(cmd, argv, id);
+		if (is_builtin(cmd[0]) == 1)
+			handl_built(cmd, argv, &status, id);
+		else
+			status =  _execute(cmd, argv, id);
 	}
 }

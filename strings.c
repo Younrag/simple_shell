@@ -50,16 +50,16 @@ int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
+	i = (int)*s1 - (int)*s2;
+	while (*s1)
 	{
-		if (s1[i] != s2[i])
-		{
-			return (s1[i] - s2[i]);
-		}
-		i++;
+		if (*s1 != *s2)
+			break;
+		s1++;
+		s2++;
+		i = (int)*s1 - (int)*s2;
 	}
-	return (0);
+	return (i);
 }
 
 /**
